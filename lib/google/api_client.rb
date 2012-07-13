@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-gem 'faraday', '~> 0.7.0'
+gem 'faraday', '>= 0.7.0'
 require 'faraday'
 require 'faraday/utils'
 require 'multi_json'
@@ -542,7 +542,7 @@ module Google
     def generate_request(options={})
       # Note: The merge method on a Hash object will coerce an API Reference
       # object into a Hash and merge with the default options.
-      
+
       options={
         :version => 'v1',
         :authorization => self.authorization,
@@ -550,7 +550,7 @@ module Google
         :user_ip => self.user_ip,
         :connection => Faraday.default_connection
       }.merge(options)
-      
+
       # The Reference object is going to need this to do method ID lookups.
       options[:client] = self
       # The default value for the :authenticated option depends on whether an

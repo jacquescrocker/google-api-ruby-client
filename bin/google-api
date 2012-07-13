@@ -11,7 +11,7 @@ OAUTH_SERVER_PORT = 12736
 require 'rubygems'
 require 'optparse'
 
-gem 'faraday', '~> 0.7.0'
+gem 'faraday', '>= 0.7.0'
 require 'faraday'
 require 'faraday/utils'
 
@@ -40,7 +40,7 @@ module Google
 <html>
   <head>
     <script>
-      function closeWindow() { 
+      function closeWindow() {
         window.open('', '_self', '');
         window.close();
       }

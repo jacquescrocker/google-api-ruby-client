@@ -14,7 +14,7 @@
 
 require 'spec_helper'
 
-gem 'faraday', '~> 0.7.0'
+gem 'faraday', '>= 0.7.0'
 require 'faraday'
 require 'faraday/utils'
 
@@ -108,7 +108,7 @@ describe Google::APIClient do
     # TODO
     it_should_behave_like 'configurable user agent'
   end
-  
+
   describe 'when executing requests' do
     before do
       @client.authorization = :oauth_2
@@ -121,10 +121,10 @@ describe Google::APIClient do
         builder.adapter(:test, stubs)
       end
     end
-     
+
     it 'should use default authorization' do
       @client.authorization.access_token = "12345"
-      @client.execute(:http_method => :get, 
+      @client.execute(:http_method => :get,
                       :uri => 'https://www.googleapis.com/test',
                       :connection => @connection)
     end
@@ -132,10 +132,10 @@ describe Google::APIClient do
     it 'should use request scoped authorization when provided' do
       @client.authorization.access_token = "abcdef"
       new_auth = Signet::OAuth2::Client.new(:access_token => '12345')
-      @client.execute(:http_method => :get, 
+      @client.execute(:http_method => :get,
                       :uri => 'https://www.googleapis.com/test',
                       :connection => @connection,
                       :authorization => new_auth)
     end
-  end  
+  end
 end
